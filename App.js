@@ -1,20 +1,68 @@
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import DrawerContainer from './src/screen/Drawer/DrawerContainer';
+import HomeScreen from './src/screen/Home';
+import Starter from './src/screen/StarterScreen';
+import SignInScreen from './src/screen/SignIn';
+import SignUpScreen from './src/screen/SignUp';
+import DressDetails from './src/screen/DressDetail';
+import Category from './src/screen/Category';
+import Cart from './src/screen/Cart';
+import Search from './src/screen/Search';
+import Profile from './src/screen/Profile';
+import DressScreen from './src/screen/DressScreen.js';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const Stack = createStackNavigator();
+function MainNavigator(){
+  return(
+    <Stack.Navigator
+      screenOptions={{
+        headerTitleStyle:{
+          fontWeight: 'bold',
+            textAlign: 'center',
+            alignSelf: 'center',
+            alignItems: 'center'
+        }
+      }}
+    >
+      <Stack.Screen name='Welcome' component={Starter}/>
+      <Stack.Screen name='Sign In' component={SignInScreen}/>
+      <Stack.Screen name='Sign Up' component={SignUpScreen}/>
+      <Stack.Screen name='Shopertino' component={HomeScreen}/>
+      <Stack.Screen name='Shop' component={Category}/>
+      <Stack.Screen name='Dress Details' component={DressDetails}/>
+      <Stack.Screen name='Shopping Bag' component={Cart}/>
+      <Stack.Screen name='Search' component={Search}/>
+      <Stack.Screen name='Profile' component={Profile}/>
+      <Stack.Screen name='Dresses' component={DressScreen}/>
+    </Stack.Navigator>
+  )
+}
+const Drawer = createDrawerNavigator();
+
+function DrawerStack(){
+  return(
+    <Drawer.Navigator
+    drawerPosition='left'
+    initialRouteName='Main'
+    drawerStyle={{
+      width: 250
+    }}
+    screenOptions={{headerShown: false}}
+    drawerContent={({navigation})=> <DrawerContainer navigation={navigation}/>}
+    >
+          <Drawer.Screen name='Main' component={MainNavigator}/>
+        </Drawer.Navigator>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App(){
+  return(
+      <NavigationContainer>
+        <DrawerStack/>
+      </NavigationContainer>
+  )
+}
