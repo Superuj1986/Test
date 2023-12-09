@@ -14,6 +14,7 @@ import Cart from './src/screen/Cart';
 import Search from './src/screen/Search';
 import Profile from './src/screen/Profile';
 import DressScreen from './src/screen/DressScreen.js';
+import Intro from './src/screen/Onboarding/index.js';
 
 const Stack = createStackNavigator();
 function MainNavigator(){
@@ -28,6 +29,7 @@ function MainNavigator(){
         }
       }}
     >
+      <Stack.Screen name='Slider' component={Intro}/>
       <Stack.Screen name='Welcome' component={Starter}/>
       <Stack.Screen name='Sign In' component={SignInScreen}/>
       <Stack.Screen name='Sign Up' component={SignUpScreen}/>
