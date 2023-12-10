@@ -52,32 +52,34 @@ export default function Cart(props){
         });
     },[],)
     return(
-        <ScrollView>
-            <View>
-                {cartList.length > 0 ? (
-                    <FlatList
-                        data={cartList}
-                        keyExtractor={(item,index) => item + index}
-                        renderItem={renderItem}
-                    />
-                ):(
-                    <View
-                        style={{flex:1, justifyContent: "center", alignItems: "center"}}
-                    >
-                        <Ionicons name="cart-outline" size={130} color={"gray"}/>
-                        <Text style={{ color: "gray", fontSize: 20}}>Add a product to purchase</Text>
-                    </View>
-                )}
-            </View>
-            <View style={{ backgroundColor:'#bcbcbc', bottom:0}}>
-                <View style={{ flexDirection: 'row', justifyContent:'space-between', margin: 20}}>
-                    <Text style={{ fontWeight:'bold', fontSize:20}}>Total:</Text>
-                    <Text style={{ fontWeight:'bold', fontSize:20}}>${Total()}</Text>
+        <View style={{height:"100%"}}>
+            <ScrollView>
+                <View>
+                    {cartList.length > 0 ? (
+                        <FlatList
+                            data={cartList}
+                            keyExtractor={(item,index) => item + index}
+                            renderItem={renderItem}
+                        />
+                    ):(
+                        <View
+                            style={{flex:1, justifyContent: "center", alignItems: "center"}}
+                        >
+                            <Ionicons name="cart-outline" size={130} color={"gray"}/>
+                            <Text style={{ color: "gray", fontSize: 20}}>Add a product to purchase</Text>
+                        </View>
+                    )}
                 </View>
-                <MainButton
-                    title={"CONTINUE"}
-                />
-            </View>
-        </ScrollView>
+            </ScrollView>
+            <View style={{ backgroundColor:'#bcbcbc',justifyContent:'flex-end', bottom:0, width:"100%"}}>
+                    <View style={{ flexDirection: 'row', justifyContent:'space-between', margin: 20}}>
+                        <Text style={{ fontWeight:'bold', fontSize:20}}>Total:</Text>
+                        <Text style={{ fontWeight:'bold', fontSize:20}}>${Total()}</Text>
+                    </View>
+                    <MainButton
+                        title={"CONTINUE"}
+                    />
+                </View>
+        </View>
     )
 }

@@ -10,6 +10,7 @@ export default function DressDetails({ navigation, route }){
     }
     const params = route.params;
     const { item } = params;
+    const [ amount, setAmount ] = useState(1);
     const [ size, setSize ] = useState(item.size[0]);
     const [ color, setColor ] = useState(item.color[0]);
     const AddToCart = async () => {
@@ -21,8 +22,9 @@ export default function DressDetails({ navigation, route }){
                 name: item.name,
                 image: item.image,
                 price: item.price,
-                size: item.size,
-                color: item.color
+                size: size,
+                color: color,
+                amount: amount
             });
         }else{
             cartData = [];
@@ -31,8 +33,9 @@ export default function DressDetails({ navigation, route }){
                 name: item.name,
                 image: item.image,
                 price: item.price,
-                size: item.size,
-                color: item.color
+                size: size,
+                color: color,
+                amount: amount
             });
         }
         AsyncStorage.setItem("cartData",JSON.stringify(cartData));
