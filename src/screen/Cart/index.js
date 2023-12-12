@@ -18,6 +18,7 @@ export default function Cart(props){
             let cartData = [];
             await AsyncStorage.setItem("cartData",JSON.stringify(cartData));
             setCartList([]);
+            navigation.navigate("Orders");
         }
     };
     const getCartData = async () => {
@@ -78,6 +79,7 @@ export default function Cart(props){
                     </View>
                     <MainButton
                         title={"CONTINUE"}
+                        onPress={onFinish}
                     />
                 </View>
         </View>

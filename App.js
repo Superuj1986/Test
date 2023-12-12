@@ -15,6 +15,8 @@ import Search from './src/screen/Search';
 import Profile from './src/screen/Profile';
 import DressScreen from './src/screen/DressScreen.js';
 import Intro from './src/screen/Onboarding/index.js';
+import OrdersScreen from './src/screen/Orders/index.js';
+import Wishlist from './src/screen/Wishlist/index.js';
 
 const Stack = createStackNavigator();
 function MainNavigator(){
@@ -40,6 +42,8 @@ function MainNavigator(){
       <Stack.Screen name='Search' component={Search}/>
       <Stack.Screen name='Profile' component={Profile}/>
       <Stack.Screen name='Dresses' component={DressScreen}/>
+      <Stack.Screen name='Orders' component={OrdersScreen}/>
+      <Stack.Screen name='Wishlist' component={Wishlist}/>
     </Stack.Navigator>
   )
 }

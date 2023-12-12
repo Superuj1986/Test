@@ -50,7 +50,12 @@ export default function DressDetails({ navigation, route }){
                     source={item.image}   
                 />
                 <View style={{ position: 'absolute',  flex: 1, flexDirection:'row',alignItems:'flex-end',width:"100%",height:500,justifyContent:'space-between'}}>
-                    <TouchableOpacity>
+                    <TouchableOpacity 
+                        onPress={() => {
+                            alert("Product has been added to your wishlist");
+                            navigation.navigate("Wishlist");
+                        }}
+                    >
                         <Image
                             style={{
                                 borderRadius: 20,
@@ -64,7 +69,7 @@ export default function DressDetails({ navigation, route }){
                     </TouchableOpacity>
                     <View>
                         <Picker
-                            style={{ width: 130, height: 30, color:'red'}}
+                            style={{ width: 130, height: 20, backgroundColor:'#999999', borderRadius: 30, marginBottom: 5}}
                             selectedValue={size}
                             onValueChange={(itemValue,itemIndex) => setSize(itemValue)}
                         >
@@ -74,7 +79,7 @@ export default function DressDetails({ navigation, route }){
                         </Picker>
                         <Picker
                             style={{
-                                color:'red'
+                                width: 130, height: 20, backgroundColor:'#999999', borderRadius: 20
                             }}
                             selectedValue={color}
                             onValueChange={(itemValue,itemIndex) => setColor(itemValue)}

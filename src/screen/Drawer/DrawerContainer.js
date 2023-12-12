@@ -18,6 +18,7 @@ export default function DrawerContainer(props){
             index: 0,
             routes: [{ name: 'Sign In'}],
         });
+        navigation.closeDrawer();
     };
     useEffect(() => {
         getUserData(user);
@@ -61,6 +62,8 @@ export default function DrawerContainer(props){
                     title="ORDERS"
                     source={require("../../../assets/icons/deliv.png")}
                     onPress={() =>{
+                        navigation.navigate("Orders");
+                        navigation.closeDrawer();
                     }}
                 />
                 <MenuButton
